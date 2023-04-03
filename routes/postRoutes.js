@@ -6,7 +6,6 @@ const postController = require('../controllers/postController');
 const router = express.Router();
 
 //Routes
-//router.get('/new', postController.getNewPostID);
 router.post('/new', postController.createNewPost);
 
 //Export express router

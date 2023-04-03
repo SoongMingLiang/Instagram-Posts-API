@@ -15,12 +15,13 @@ const dbURI = `mongodb+srv://${databaseUsername}:${databasePassword}@instagram-p
 const app = express();
 
 //Listen to port once database connection is established
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(port, () => console.log(`Available at http://localhost:${port}`)))
-    .catch((err) => console.log(err));
+// mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then((result) => app.listen(port, () => console.log(`Available at http://localhost:${port}`)))
+//     .catch((err) => console.log(err));
+app.listen(port, () => console.log(`Available at http://localhost:${port}`))
 
 //Connect to Instagram account
-connectToInstagram();
+//connectToInstagram();
 
 //Middleware to parse JSON object
 app.use(express.json());

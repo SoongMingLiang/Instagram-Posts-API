@@ -5,4 +5,6 @@ const badWords = require('bad-words');
 const filter = new badWords();
 
 //Export bad-words application
-module.exports = filter;
+module.exports = {
+    filter
+};
