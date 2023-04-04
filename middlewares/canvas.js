@@ -146,7 +146,9 @@ const generateImage = async (content) => {
     )
 
     const buffer = canvas.toBuffer('image/jpeg');
-    fs.writeFileSync('image.png', buffer);
+    //Save image (optional)
+    // fs.writeFileSync('image.png', buffer);
+
     return buffer;
 }
 
