@@ -19,10 +19,10 @@ const getNewPostID = () => {
 }
 const postToInstagram = async (id, content) => {
     let image = await generateImage(content);
-    await ig.publish.photo({
-        file: image,
-        caption: id,
-    });
+    // await ig.publish.photo({
+    //     file: image,
+    //     caption: id,
+    // });
     console.log('Post have been posted to Instagram!');
 }
 
@@ -44,7 +44,7 @@ const createNewPost = async (req, res) => {
     }
     content = filter.clean(content);
     try{
-        //await postToInstagram(id, content);
+        await postToInstagram(id, content);
     }
     catch(err){
         console.log('Error while post to Instagram');
