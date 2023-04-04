@@ -2,7 +2,6 @@
 const fs = require('fs');
 const path = require('path');
 const { createCanvas, loadImage } = require('canvas');
-const stringPixelWidth = require('string-pixel-width');
 
 //Some constants will be used
 const width = 1080;

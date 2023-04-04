@@ -1,6 +1,4 @@
 //Import modules
-const fs = require('fs');
-const path = require('path');
 const Post = require('../models/post');
 const { filter } = require('../middlewares/badWord');
 const { generateImage } = require('../middlewares/canvas');
@@ -34,13 +32,13 @@ const postToInstagram = async (id, image) => {
         file: image,
         caption: id,
     });
-    console.log('Post have been posted to Instagram!');
+    console.log(`Post has been posted to Instagram! id: ${id}`);
 }
-const deleteFromInstagram = async (mediaID) => {
+const deleteFromInstagram = async (postID, mediaID) => {
     await ig.media.delete({
         mediaId: mediaID,
     });
-    console.log('Post have been deleted from Instagram!');
+    console.log(`Post has been deleted from Instagram! id: ${postID}`);
 }
 
 //Controllers
@@ -53,7 +51,7 @@ const createNewPost = async (req, res) => {
     });
     try{
         await newPost.save();
-        console.log('Post saved!');
+        console.log(`Post has been saved to database! id: ${id}`);
     }
     catch(err){
         console.log('Error while save to database');
@@ -80,7 +78,7 @@ const deletePost = async (req, res) => {
     console.log(postID);
     try{
         await Post.findOneAndDelete({ id: postID });
-        console.log(`post ID: ${postID} has been deleted from database`);
+        console.log(`Post has been deleted from database! id: ${postID}`);
     }
     catch(err){
         console.log('Error while delete from database');
@@ -88,7 +86,7 @@ const deletePost = async (req, res) => {
     }
     try{
         let mediaID = await getMediaID(postID);
-        await deleteFromInstagram(mediaID);
+        await deleteFromInstagram(postID, mediaID);
     }
     catch(err){
         console.log('Error while delete from Instagram');
