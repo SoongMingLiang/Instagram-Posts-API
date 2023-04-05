@@ -18,6 +18,7 @@ const dbURI = `mongodb+srv://${databaseUsername}:${databasePassword}@instagram-p
 const app = express();
 
 //Allow requests come from vue app that run locally
+app.options('*', cors());
 app.use(cors({
     origin: [webApp, localhost],
 }));
