@@ -37,7 +37,7 @@ connectToInstagram();
 //Middleware to parse JSON object
 app.use(express.json());
 
-app.get('./', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World');
 })
 
