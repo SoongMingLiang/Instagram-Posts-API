@@ -37,5 +37,9 @@ connectToInstagram();
 //Middleware to parse JSON object
 app.use(express.json());
 
+app.get('./', (req, res) => {
+    res.send('Hello World');
+})
+
 //Direct to post route
 app.use('/post', postRoutes);
