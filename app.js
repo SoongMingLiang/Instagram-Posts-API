@@ -21,6 +21,7 @@ const app = express();
 app.options('*', cors());
 app.use(cors({
     origin: [webApp, localhost],
+    methods: ["GET", "POST", "DELETE"]
 }));
 
 //Listen to port once database connection is established
