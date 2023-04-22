@@ -10,6 +10,7 @@ require('dotenv').config();
 const port = process.env.PORT || 5000;
 const webApp = process.env.WEB_APP;
 const localhost = process.env.LOCAL_HOST;
+const manageWebApp = process.env.MANAGE_WEB_APP;
 const databaseUsername = process.env.DATABASE_USERNAME;
 const databasePassword = process.env.DATABASE_PASSWORD;
 const dbURI = `mongodb+srv://${databaseUsername}:${databasePassword}@instagram-posts.wf81a3n.mongodb.net/?retryWrites=true&w=majority`;
@@ -20,7 +21,7 @@ const app = express();
 //Allow requests come from vue app that run locally
 app.options('*', cors());
 app.use(cors({
-    origin: [webApp, localhost],
+    origin: [webApp, localhost, manageWebApp],
     methods: ["GET", "POST", "DELETE"]
 }));
 

@@ -6,7 +6,9 @@ const postController = require('../controllers/postController');
 const router = express.Router();
 
 //Routes
+router.get('/', postController.getAllPosts);
 router.post('/new', postController.createNewPost);
+router.get('/:id', postController.getOnePost);
 router.delete('/:id', postController.deletePost);
 
 //Export express router

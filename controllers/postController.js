@@ -37,6 +37,7 @@ const postToInstagram = async (id, image) => {
 const deleteFromInstagram = async (postID, mediaID) => {
     await ig.media.delete({
         mediaId: mediaID,
+        mediaType: 'PHOTO',
     });
     console.log(`Post has been deleted from Instagram! id: ${postID}`);
 }
@@ -86,6 +87,7 @@ const deletePost = async (req, res) => {
     }
     try{
         let mediaID = await getMediaID(postID);
+        console.log(mediaID);
         await deleteFromInstagram(postID, mediaID);
     }
     catch(err){
@@ -95,8 +97,36 @@ const deletePost = async (req, res) => {
     res.send('Delete request accepted!');
 }
 
+const getAllPosts = async (req, res) => {
+    try{
+        
+        let allPosts = await Post.find();
+        res.send(allPosts);
+    }
+    catch(err){
+        console.log('Error while fetching all posts');
+        console.log(err);
+    }
+}
+
+const getOnePost = async (req, res) => {
+    let postID = req.params.id;
+    // postID = '#' + postID;
+    try{
+        let post = await Post.findOne({ _id: postID });
+        console.log(`Post founded from database! id: ${postID}`);
+        res.send(post);
+    }
+    catch(err){
+        console.log('Error while searching post');
+        console.log(err);
+    }
+}
+
 //Exports controllers
 module.exports = {
     createNewPost,
-    deletePost
+    deletePost,
+    getAllPosts,
+    getOnePost
 }
