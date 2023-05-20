@@ -1,5 +1,5 @@
 # Instagram-Posts-API
-This is the backend API of the [Instagram-Auto-Post](https://github.com/SoongMingLiang/Instagram-Auto-Post) project.
+This is the backend API of the [Instagram-Auto-Post](https://github.com/SoongMingLiang/Instagram-Auto-Post) project and [Instagram-Post-Manage-App](https://github.com/SoongMingLiang/Instagram-Post-Manage-App) project.
 For further details of this project, direct to above link. This repo is focused on the backend API implementation.
 
 ## Development
